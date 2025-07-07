@@ -1,0 +1,22 @@
+{
+  "name": "Gravity",
+  "inspector": ["Apple", "Earth"],
+  "description": "Apply F = G * (m1 * m2) / r² and update force vectors",
+  "attributes": [
+    {
+      "name": "G",
+      "type": "float",
+      "value": 0.1,
+      "ui": "slider",
+      "ui_attribute": { "min": 0, "max": 1, "step": 0.01 }
+    },
+    {
+      "name": "dt",
+      "type": "float",
+      "value": 0.016,
+      "ui": "input",
+      "ui_attribute": { "step": 0.001 }
+    }
+  ],
+  "stepfn": "const objA = getObject('Apple'); const objB = getObject('Earth');  const dx = objB.position[0] - objA.position[0]; const dy = objB.position[1] - objA.position[1]; const dz = objB.position[2] - objA.position[2];  const distSq = dx * dx + dy * dy + dz * dz + 0.01; const dist = Math.sqrt(distSq);  const forceMag = G * objA.mass * objB.mass / distSq;  const fx = (dx / dist) * forceMag; const fy = (dy / dist) * forceMag; const fz = (dz / dist) * forceMag;  objA.force[0] += fx; objA.force[1] += fy; objA.force[2] += fz;  objB.force[0] -= fx; objB.force[1] -= fy; objB.force[2] -= fz;"
+}

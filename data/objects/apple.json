@@ -1,0 +1,38 @@
+{
+  "name": "Apple",
+  "type": "rigidbody",
+  "description": "Apple object that moves with gravity",
+  "asset": "./assets/apple.gltf",
+  "attributes": [
+    {
+      "name": "mass",
+      "type": "int",
+      "value": 10,
+      "ui": "slider",
+      "ui_attribute": { "min": 5, "max": 100, "step": 1 }
+    },
+    {
+      "name": "position",
+      "type": "vector3",
+      "value": [0, 0, 0],
+      "ui": null,
+      "ui_attribute": null
+    },
+    {
+      "name": "velocity",
+      "type": "vector3",
+      "value": [0, 0, 0],
+      "ui": null,
+      "ui_attribute": null
+    },
+    {
+      "name": "force",
+      "type": "vector3",
+      "value": [0, 0, 0],
+      "ui": null,
+      "ui_attribute": null
+    }
+  ],
+  "updatefn": "for (let i = 0; i < 3; i++) {velocity[i] += (force[i] / mass) * dt;position[i] += velocity[i] * dt;}",
+  "renderfn": "return (<primitive  object={gltf.scene.clone()}  position={position}/>);"
+}
