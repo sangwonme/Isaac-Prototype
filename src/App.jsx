@@ -67,19 +67,19 @@ const App = () => {
 
         <Suspense fallback={null}>
           <GenericGLB
-            url="/assets/apple.glb"
+            url="/assets/earth.glb"
             position={[-20, 0, 0]}
             scale={scale}
             setIsDragging={setIsDragging}
           />
           <GenericGLB
-            url="/assets/apple.glb"
+            url="/assets/earth.glb"
             position={[0, 0, 0]}
             scale={scale}
             setIsDragging={setIsDragging}
           />
           <GenericGLB
-            url="/assets/apple.glb"
+            url="/assets/earth.glb"
             position={[20, 0, 0]}
             scale={scale}
             setIsDragging={setIsDragging}
