@@ -2,7 +2,7 @@
   "name": "Apple",
   "type": "rigidbody",
   "description": "Apple object that moves with gravity",
-  "asset": "./assets/apple.gltf",
+  "asset": "./assets/apple.glb",
   "attributes": [
     {
       "name": "mass",

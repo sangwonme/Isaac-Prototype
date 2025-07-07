@@ -2,7 +2,7 @@
   "name": "Earth",
   "type": "rigidbody",
   "description": "Earth object that moves with gravity",
-  "asset": "./assets/earth.gltf",
+  "asset": "./assets/earth.glb",
   "attributes": [
     {
       "name": "mass",
