@@ -1,4 +1,4 @@
-import React, { useState, Suspense, useRef } from 'react';
+import React, { useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { useSpring, a } from '@react-spring/three';
@@ -35,7 +35,7 @@ const App = () => {
   );
 };
 
-const DraggableDuck = ({ position, scale, setIsDragging }: { position: [number, number, number], scale: number, setIsDragging: (isDragging: boolean) => void }) => {
+const DraggableDuck = ({ position, scale, setIsDragging }) => {
   const { scene } = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/duck/model.gltf');
   const [hovered, setHovered] = useState(false);
   const [{ position: springPos }, api] = useSpring(() => ({

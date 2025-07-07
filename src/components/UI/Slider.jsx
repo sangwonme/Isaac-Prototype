@@ -1,16 +1,7 @@
 import React from 'react';
 import styles from './Slider.module.scss';
 
-interface SliderProps {
-  label: string;
-  min: number;
-  max: number;
-  step: number;
-  value: number;
-  onChange: (value: number) => void;
-}
-
-const Slider: React.FC<SliderProps> = ({ label, min, max, step, value, onChange }) => {
+const Slider = ({ label, min, max, step, value, onChange }) => {
   return (
     <div className={styles.sliderContainer}>
       <label className={styles.label}>{label}</label>
