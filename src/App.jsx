@@ -1,47 +1,27 @@
 import React, { useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Center, useGLTF } from '@react-three/drei';
-import { useSpring, a } from '@react-spring/three';
-import { useDrag } from '@use-gesture/react';
+import { OrbitControls, useGLTF } from '@react-three/drei';
 import Slider from './components/UI/Slider';
+import { GenericGLB } from './utils/GenericGLB';
 
 
-export const GenericGLB = ({ url, position, scale, setIsDragging }) => {
-  const { scene } = useGLTF(url);
-  const [hovered, setHovered] = useState(false);
+const objectList = [
+  {
+    url: '/assets/earth.glb',
+    position: [-20, 0, 0],
+  },
+  {
+    url: '/assets/earth.glb',
+    position: [0, 0, 0],
+  },
+  {
+    url: '/assets/earth.glb',
+    position: [20, 0, 0],
+  },
+];
 
-  const [{ position: springPos }, api] = useSpring(() => ({
-    position,
-    config: { friction: 10 },
-  }));
 
-  const bind = useDrag(
-    ({ active, movement: [x, y] }) => {
-      setIsDragging?.(active);
-      setHovered(active);
-      api.start({
-        position: [position[0] + x / 50, position[1] - y / 50, position[2]],
-      });
-    },
-    { eventOptions: { pointer: true } }
-  );
-
-  return (
-    <a.group position={springPos} {...bind()}>
-      <Center scale={scale}>
-        <primitive object={scene.clone(true)} />
-      </Center>
-      {hovered && (
-        <mesh>
-          <sphereGeometry args={[0.6, 32, 32]} />
-          <meshStandardMaterial color="red" transparent opacity={0.5} />
-        </mesh>
-      )}
-    </a.group>
-  );
-};
-
-useGLTF.preload('/assets/apple.glb');
+objectList.forEach(obj => useGLTF.preload(obj.url));
 
 const App = () => {
   const [scale, setScale] = useState(1);
@@ -66,24 +46,15 @@ const App = () => {
         <OrbitControls enabled={!isDragging} />
 
         <Suspense fallback={null}>
-          <GenericGLB
-            url="/assets/earth.glb"
-            position={[-20, 0, 0]}
-            scale={scale}
-            setIsDragging={setIsDragging}
-          />
-          <GenericGLB
-            url="/assets/earth.glb"
-            position={[0, 0, 0]}
-            scale={scale}
-            setIsDragging={setIsDragging}
-          />
-          <GenericGLB
-            url="/assets/earth.glb"
-            position={[20, 0, 0]}
-            scale={scale}
-            setIsDragging={setIsDragging}
-          />
+          {objectList.map((obj, index) => (
+            <GenericGLB
+              key={index}
+              url={obj.url}
+              position={obj.position}
+              scale={scale}
+              setIsDragging={setIsDragging}
+            />
+          ))}
         </Suspense>
       </Canvas>
     </>
