@@ -2,28 +2,11 @@ import React, { useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import Slider from './components/UI/Slider';
-import { GenericGLB } from './utils/GenericGLB';
+import Renderer from './lifecycle/Renderer';
+
+import objectConfigs from '../public/data/objects/apple.json';
 
 import styles from './App.module.scss';
-
-
-const objectList = [
-  {
-    url: '/assets/earth.glb',
-    position: [-20, 0, 0],
-  },
-  {
-    url: '/assets/earth.glb',
-    position: [0, 0, 0],
-  },
-  {
-    url: '/assets/earth.glb',
-    position: [20, 0, 0],
-  },
-];
-
-
-objectList.forEach(obj => useGLTF.preload(obj.url));
 
 const App = () => {
   const [scale, setScale] = useState(1);
@@ -45,15 +28,7 @@ const App = () => {
               <OrbitControls enabled={!isDragging} />
 
               <Suspense fallback={null}>
-                {objectList.map((obj, index) => (
-                  <GenericGLB
-                    key={index}
-                    url={obj.url}
-                    position={obj.position}
-                    scale={scale}
-                    setIsDragging={setIsDragging}
-                  />
-                ))}
+                <Renderer config={objectConfigs} />
               </Suspense>
             </Canvas>
           </div>
