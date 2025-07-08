@@ -15,10 +15,12 @@ const RenderSingleObject = ({ config }) => {
   const position = getAttr('position', [0, 0, 0]);
   const desiredSize = getAttr('scale', 1);
 
+  // normalize the size
   useEffect(() => {
     if (!scene) return;
 
     const clonedScene = scene.clone(true);
+    
     const box = new THREE.Box3().setFromObject(clonedScene);
     const size = new THREE.Vector3();
     box.getSize(size);

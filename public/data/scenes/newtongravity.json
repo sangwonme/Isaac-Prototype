@@ -1,0 +1,10 @@
+{
+  "name": "Newton's Gravity",
+  "objects": [
+    { "name": "apple", "entity": 1 },
+    { "name": "earth", "entity": 1 }
+  ],
+  "behavior": [
+    { "name": "gravity" }
+  ]
+}
