@@ -3,14 +3,18 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import Slider from './components/UI/Slider';
 import Renderer from './lifecycle/Renderer';
+import BehaviorManager from './lifecycle/BehaviorManager';
 
-import objectConfigs from '../public/data/objects/apple.json';
+import initialObjectConfigs from '../public/data/objects/apple.json';
 
 import styles from './App.module.scss';
 
 const App = () => {
+  const [objectConfigs, setObjectConfigs] = useState(initialObjectConfigs);
   const [scale, setScale] = useState(1);
   const [isDragging, setIsDragging] = useState(false);
+
+  console.log(objectConfigs.attributes.at(1).value);
 
   return (
     <>
@@ -29,6 +33,7 @@ const App = () => {
 
               <Suspense fallback={null}>
                 <Renderer config={objectConfigs} />
+                <BehaviorManager config={objectConfigs} setConfig={setObjectConfigs} />
               </Suspense>
             </Canvas>
           </div>

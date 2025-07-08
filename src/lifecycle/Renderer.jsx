@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useGLTF, Center } from '@react-three/drei';
-import { a } from '@react-spring/three';
-import { useSpring } from '@react-spring/three';
+import { a, useSpring } from '@react-spring/three';
 
 const Renderer = ({ config }) => {
   const { asset, attributes } = config;
@@ -13,10 +12,14 @@ const Renderer = ({ config }) => {
   const position = getAttr('position', [0, 0, 0]);
   const scale = getAttr('scale', 1);
 
-  const [{ pos }] = useSpring(() => ({
+  const [{ pos }, api] = useSpring(() => ({
     pos: position,
     config: { friction: 10 },
   }));
+
+  useEffect(() => {
+    api.start({ pos: position });
+  }, [position, api]);
 
   return (
     <a.group position={pos} scale={scale}>

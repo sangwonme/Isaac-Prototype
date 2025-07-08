@@ -21,7 +21,7 @@
     {
       "name": "velocity",
       "type": "vector3",
-      "value": [0, 0, 0],
+      "value": [1, 0, 0],
       "ui": null,
       "ui_attribute": null
     },
