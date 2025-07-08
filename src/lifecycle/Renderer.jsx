@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { a } from '@react-spring/three';
 import * as THREE from 'three';
+import { getAttr } from '../utils/attribute.js';
 
 const RenderSingleObject = ({ config }) => {
   const groupRef = useRef();
@@ -9,11 +10,8 @@ const RenderSingleObject = ({ config }) => {
   const { scene } = useGLTF(asset);
   const [normalizedScale, setNormalizedScale] = useState([1, 1, 1]);
 
-  const getAttr = (name, fallback) =>
-    attributes.find(attr => attr.name === name)?.value ?? fallback;
-
-  const position = getAttr('position', [0, 0, 0]);
-  const desiredSize = getAttr('scale', 1);
+  const position = getAttr(attributes, 'position', [0, 0, 0]);
+  const desiredSize = getAttr(attributes, 'scale', 1);
 
   // normalize the size
   useEffect(() => {
