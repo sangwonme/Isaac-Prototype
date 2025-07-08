@@ -39,7 +39,7 @@ const App = () => {
           </div>
 
           <div className={styles.controlUIContainer}>
-            
+{/*             
             <Slider
               label="Scale"
               min={0.1}
@@ -47,7 +47,7 @@ const App = () => {
               step={0.05}
               value={scale}
               onChange={setScale}
-            />
+            /> */}
 
           </div>
 

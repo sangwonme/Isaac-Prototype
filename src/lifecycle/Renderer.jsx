@@ -12,21 +12,8 @@ const Renderer = ({ config }) => {
   const position = getAttr('position', [0, 0, 0]);
   const scale = getAttr('scale', 1);
 
-  const [{ pos }, api] = useSpring(() => ({
-    pos: position,
-    config: { friction: 10 },
-  }));
-
-  useEffect(() => {
-    api.start({ pos: position });
-  }, [position, api]);
-
   return (
-    <a.group position={pos} scale={scale}>
-      <Center>
-        <primitive object={scene.clone(true)} />
-      </Center>
-    </a.group>
+    <primitive object={scene.clone(true)} position={position}/>
   );
 };
 
