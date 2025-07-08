@@ -1,3 +1,4 @@
+[
 {
   "name": "Apple",
   "type": "rigidbody",
@@ -21,7 +22,45 @@
     {
       "name": "velocity",
       "type": "vector3",
-      "value": [50, 0, 0],
+      "value": [0.1, 0, 0],
+      "ui": null,
+      "ui_attribute": null
+    },
+    {
+      "name": "force",
+      "type": "vector3",
+      "value": [0, 0, 0],
+      "ui": null,
+      "ui_attribute": null
+    }
+  ],
+  "updatefn": "for (let i = 0; i < 3; i++) {velocity[i] += (force[i] / mass) * dt;position[i] += velocity[i] * dt;}",
+  "renderfn": "return (<primitive  object={gltf.scene.clone()}  position={position}/>);"
+},
+{
+  "name": "Earth",
+  "type": "rigidbody",
+  "description": "Earth object that moves with gravity",
+  "asset": "./assets/earth.glb",
+  "attributes": [
+    {
+      "name": "mass",
+      "type": "int",
+      "value": 10,
+      "ui": "slider",
+      "ui_attribute": { "min": 5, "max": 100, "step": 1 }
+    },
+    {
+      "name": "position",
+      "type": "vector3",
+      "value": [1, 0, 0],
+      "ui": null,
+      "ui_attribute": null
+    },
+    {
+      "name": "velocity",
+      "type": "vector3",
+      "value": [0.1, 0, 0],
       "ui": null,
       "ui_attribute": null
     },
@@ -36,3 +75,4 @@
   "updatefn": "for (let i = 0; i < 3; i++) {velocity[i] += (force[i] / mass) * dt;position[i] += velocity[i] * dt;}",
   "renderfn": "return (<primitive  object={gltf.scene.clone()}  position={position}/>);"
 }
+]

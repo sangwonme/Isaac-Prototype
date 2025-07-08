@@ -14,7 +14,7 @@ const App = () => {
   const [scale, setScale] = useState(1);
   const [isDragging, setIsDragging] = useState(false);
 
-  console.log(objectConfigs.attributes.at(1).value);
+  // console.log(objectConfigs.attributes.at(1).value);
 
   return (
     <>

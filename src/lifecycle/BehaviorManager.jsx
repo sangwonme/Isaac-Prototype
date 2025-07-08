@@ -2,20 +2,24 @@ import { useFrame } from '@react-three/fiber';
 
 const BehaviorManager = ({ config, setConfig }) => {
   useFrame((state, delta) => {
-    const { attributes } = config;
-    const position = attributes.find(attr => attr.name === 'position').value;
-    const velocity = attributes.find(attr => attr.name === 'velocity').value;
+    const updatedConfig = config.map(obj => {
+      const newAttributes = obj.attributes.map(attr => {
+        if (attr.name === 'position') {
+          const velocityAttr = obj.attributes.find(a => a.name === 'velocity');
+          const velocity = velocityAttr?.value ?? [0, 0, 0];
+          const newPosition = attr.value.map((p, i) => p + velocity[i] * delta);
+          return { ...attr, value: newPosition };
+        }
+        return attr;
+      });
 
-    const newPosition = position.map((p, i) => p + velocity[i] * delta);
-
-    const newAttributes = attributes.map(attr => {
-      if (attr.name === 'position') {
-        return { ...attr, value: newPosition };
-      }
-      return attr;
+      return {
+        ...obj,
+        attributes: newAttributes,
+      };
     });
 
-    setConfig({ ...config, attributes: newAttributes });
+    setConfig(updatedConfig);
   });
 
   return null;
