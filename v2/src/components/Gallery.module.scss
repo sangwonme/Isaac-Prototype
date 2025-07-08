@@ -4,18 +4,21 @@
   align-items: center;
   height: 100%;
 
-  .addButton {
-    width: 120px;
-    height: 120px;
-    border: 2px dashed #555;
+  .addButton, .galleryItem {
+    height: 80%;
+    aspect-ratio: 1 / 1;
     border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .addButton {
+    border: 2px dashed #555;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    font-size: 50px;
+    font-size: 3vw;
     color: #555;
-    transition: all 0.2s ease-in-out;
 
     &:hover {
       background-color: #333;
@@ -25,13 +28,8 @@
   }
 
   .galleryItem {
-    width: 120px;
-    height: 120px;
-    cursor: pointer;
-    border-radius: 12px;
     overflow: hidden;
     border: 3px solid transparent;
-    transition: all 0.2s ease-in-out;
     position: relative;
 
     img {
