@@ -34,7 +34,7 @@ const App = () => {
       <div className={styles.container}>
 
         <div className={styles.galleryContainer}>
-
+          
         </div>
 
         <main>
@@ -59,6 +59,7 @@ const App = () => {
           </div>
 
           <div className={styles.controlUIContainer}>
+            
             <Slider
               label="Scale"
               min={0.1}

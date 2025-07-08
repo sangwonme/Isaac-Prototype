@@ -7,6 +7,7 @@
         width: 100%;
         height: 15%;
         margin: 0;
+        border: 1px solid #e2e2e2;
 
     }
 
@@ -22,6 +23,7 @@
             width: 80%;
             height: 100%;
             margin: 0;
+            border: 1px solid #e2e2e2;
 
         }
 
@@ -30,7 +32,12 @@
             width: 20%;
             height: 100%;
             margin: 0;
+            border: 1px solid #e2e2e2;
 
         }
     }
+}
+
+.container, .galleryContainer, .canvasContainer, .controlUIContainer {
+    box-sizing: border-box;
 }
