@@ -7,7 +7,7 @@
     {
       "name": "mass",
       "type": "int",
-      "value": 1000,
+      "value": 100,
       "ui": "slider",
       "ui_attribute": { "min": 5, "max": 100, "step": 1 }
     },
